@@ -1,146 +1,106 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>vjvc - Developer Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #050505;
-      --text: #e0e0e0;
-      --primary: #a0a0a0;
-      --primary-dark: #6f6f6f;
-      --primary-light: #d0d0d0;
-      --card: #0e0e0e;
-      --shadow: rgba(180, 180, 180, 0.18);
-      --nav-bg: rgba(10, 10, 10, 0.6);
-      --glass: rgba(255, 255, 255, 0.06);
-    }* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
-body { background: var(--bg); color: var(--text); overflow-x: hidden; }
-html { scroll-behavior: smooth; }
-
-/* Navbar */
-nav {
-  position: fixed; top: 0; left: 0; width: 100%;
-  backdrop-filter: blur(12px);
-  background: var(--glass);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  z-index: 1000;
-  display: flex; justify-content: center;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vjvc - Digital Artist Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050505;
+  --text: #e0e0e0;
+  --primary: #a0a0a0;
+  --primary-dark: #6f6f6f;
+  --primary-light: #d0d0d0;
+  --card: #0e0e0e;
+  --shadow: rgba(180,180,180,0.18);
+  --glass: rgba(255,255,255,0.06);
 }
-nav ul { display: flex; gap: 2rem; list-style: none; padding: 1rem 0; font-size: 1.05rem; }
-nav a { text-decoration: none; color: var(--primary-light); font-weight: 600; transition: .3s; }
-nav a:hover { color: white; }
-
-section { padding: 6rem 1.5rem 4rem; max-width: 1100px; margin: auto; }
-
-.profile-pic { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; display: block; margin: auto; border: 3px solid var(--primary); box-shadow: 0 0 25px var(--shadow); animation: float 4s ease-in-out infinite; }
-@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
-
-.section-title { font-size: 2.3rem; text-align: center; margin-bottom: 2rem; color: var(--primary-light); letter-spacing: 1px; text-shadow: 0 0 20px rgba(255,255,255,0.12); }
-.intro { max-width: 750px; margin: auto; font-size: 1.15rem; text-align: center; line-height: 1.8; }
-
-.card { background: var(--card); padding: 1.8rem 2rem; border-radius: 14px; box-shadow: 0 0 25px var(--shadow); margin: auto; max-width: 800px; transition: .3s; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 0 35px rgba(200,200,200,0.2); }
-
-.skills { display: flex; flex-direction: column; gap: 1.3rem; }
-.skill-label { display: flex; justify-content: space-between; }
-.skill-bar { background: #1a1a1a; height: 14px; border-radius: 7px; overflow: hidden; box-shadow: inset 0 0 6px #000; }
-.skill-bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary-dark), var(--primary-light)); transition: width 1.8s ease; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; max-width: 900px; margin: auto; }
-.project-card { padding: 1.5rem; background: var(--card); border-radius: 14px; box-shadow: 0 0 20px var(--shadow); transition: .3s; font-size: 1.1rem; }
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 0 30px rgba(200,200,200,0.22); }
-
-.contact p { margin-bottom: .5rem; }
-.contact a { color: var(--primary-light); text-decoration: none; }
-
-form input, form textarea { width: 100%; padding: 14px; background: #111; color: white; border: 1.5px solid #555; border-radius: 8px; margin-bottom: 1rem; transition: .3s; }
-form input:focus, textarea:focus { border-color: var(--primary-light); box-shadow: 0 0 8px var(--primary-dark); }
-form button { background: var(--primary); color: black; padding: 12px 28px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: .3s; }
-form button:hover { opacity: .8; }
-
-#topBtn { position: fixed; bottom: 25px; right: 25px; background: var(--primary); color: black; border: none; padding: 12px 18px; font-weight: bold; border-radius: 8px; cursor: pointer; display: none; transition: .3s; }
-#topBtn:hover { opacity: 0.75; }
-
-  </style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn',sans-serif;}body{background:var(--bg);color:var(--text);overflow-x:hidden;}html{scroll-behavior:smooth;}
+nav{position:fixed;top:0;left:0;width:100vw;backdrop-filter:blur(12px);background:var(--glass);border-bottom:1px solid rgba(255,255,255,0.07);z-index:1000;display:flex;justify-content:center;}
+nav ul{display:flex;gap:1.5rem;list-style:none;padding:0.9rem 1rem;margin:0;font-size:1rem;flex-wrap:wrap;}
+nav a{text-decoration:none;color:var(--primary-light);font-weight:600;transition:.3s;}nav a:hover{color:white;}
+@media(max-width:480px){nav ul{gap:1rem;font-size:0.95rem;padding:0.7rem 0.5rem;}}
+section{padding:6rem 1.5rem 4rem;max-width:1100px;margin:auto;}
+.profile-pic{width:170px;height:170px;border-radius:50%;object-fit:cover;display:block;margin:auto;border:3px solid var(--primary);box-shadow:0 0 25px var(--shadow);animation:float 4s ease-in-out infinite;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+.section-title{font-size:2.3rem;text-align:center;margin-bottom:2rem;color:var(--primary-light);} .intro{max-width:750px;margin:auto;font-size:1.15rem;text-align:center;line-height:1.8;}
+.card{background:var(--card);padding:1.8rem 2rem;border-radius:14px;box-shadow:0 0 25px var(--shadow);max-width:800px;margin:auto;transition:.3s;} .card:hover{transform:translateY(-4px);} 
+.skills{display:flex;flex-direction:column;gap:1.3rem;} .skill-label{display:flex;justify-content:space-between;} .skill-bar{background:#1a1a1a;height:14px;border-radius:7px;overflow:hidden;box-shadow:inset 0 0 6px #000;} .skill-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary-dark),var(--primary-light));transition:width 1.8s ease;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;max-width:900px;margin:auto;} .project-card{padding:1.5rem;background:var(--card);border-radius:14px;box-shadow:0 0 20px var(--shadow);font-size:1.1rem;transition:.3s;} .project-card:hover{transform:translateY(-5px);} 
+.contact p{margin-bottom:0.5rem;} .contact a{color:var(--primary-light);text-decoration:none;} 
+form input,form textarea{width:100%;padding:14px;background:#111;color:white;border:1.5px solid #555;border-radius:8px;margin-bottom:1rem;transition:.3s;} form input:focus,form textarea:focus{border-color:var(--primary-light);} form button{background:var(--primary);color:black;padding:12px 28px;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;} form button:hover{opacity:.8;} 
+#topBtn{position:fixed;bottom:25px;right:25px;background:var(--primary);padding:12px 18px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;display:none;} #topBtn:hover{opacity:.75;}
+</style>
 </head>
-<body>  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>  <section id="about">
-    <img src="https://i.postimg.cc/ZYVrxzvg/0e358514ece856e6e5aa1bbbb40e2aed.jpg" class="profile-pic" />
-    <h2 class="section-title">vjvc - Developer</h2>
-    <p class="intro">Hi! I'm Armin — I build clean, smooth, modern web applications and Discord services with React, JavaScript and beautiful UI animations.</p>
-  </section>  <section id="skills">
-    <h2 class="section-title">Skills & Expertise</h2>
-    <div class="card skills">
-      <div><div class="skill-label"><span>JavaScript</span><span>34%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="34%"></div></div></div>
-      <div><div class="skill-label"><span>React</span><span>63%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="63%"></div></div></div>
-      <div><div class="skill-label"><span>CSS Animations</span><span>46%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="46%"></div></div></div>
-      <div><div class="skill-label"><span>Node.js</span><span>23%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="23%"></div></div></div>
-      <div><div class="skill-label"><span>Discord Bot Development</span><span>98%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="98%"></div></div></div>
-      <div><div class="skill-label"><span>Python</span><span>70%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="70%"></div></div></div>
-    </div>
-  </section>  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="grid">
-      <div class="project-card">Modern portfolio website with React & animations</div>
-      <div class="project-card">Custom Discord bot with moderation & music features</div>
-      <div class="project-card">Interactive web apps with smooth UX</div>
-    </div>
-  </section>  <section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="card">
-      <ul>
-        <li>Frontend Developer at XYZ — 2 years</li>
-        <li>Freelance Discord Bot Developer — 3 years</li>
-        <li>Open-source contributor</li>
-      </ul>
-    </div>
-  </section>  <section id="contact">
-    <h2 class="section-title">Contact Me</h2>
-    <div class="card contact">
-      <p>Email: <a href="mailto:arminrhgozar@gmail.com">arminrhgozar@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/ArminArtt" target="_blank">ArminArtt</a></p>
-      <p>Discord: <span>vjvc</span></p>
-    </div><form id="contact-form" class="card">
-  <label>Name</label><input type="text" required />
-  <label>Email</label><input type="email" required />
-  <label>Message</label><textarea rows="5" required></textarea>
-  <button type="submit">Send Message</button>
+<body>
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<section id="about">
+<img src="https://i.postimg.cc/ZYVrxzvg/0e358514ece856e6e5aa1bbbb40e2aed.jpg" class="profile-pic">
+<h2 class="section-title">vjvc - Digital Artist</h2>
+<p class="intro">Hello! I'm Armin — a digital artist focused on stylized and semi-realistic character design, fantasy illustrations, and cinematic lighting. I create artworks that tell stories through emotion, color, and atmosphere. Always learning, always creating.</p>
+</section>
+<section id="skills">
+<h2 class="section-title">Skills & Expertise</h2>
+<div class="card skills">
+<div><div class="skill-label"><span>Digital Painting</span><span>95%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="95%"></div></div></div>
+<div><div class="skill-label"><span>Character Design</span><span>90%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div></div>
+<div><div class="skill-label"><span>Concept Art</span><span>85%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div></div>
+<div><div class="skill-label"><span>Color & Lighting</span><span>80%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div></div>
+<div><div class="skill-label"><span>Illustration</span><span>88%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="88%"></div></div></div>
+<div><div class="skill-label"><span>Stylized Art</span><span>92%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-width="92%"></div></div></div>
+</div>
+</section>
+<section id="projects">
+<h2 class="section-title">Art Projects</h2>
+<div class="grid">
+<div class="project-card">Stylized & Semi-Realistic Character Collection</div>
+<div class="project-card">Fantasy Illustration Series with Cinematic Lighting</div>
+<div class="project-card">Commissioned Artwork for Creators & Online Brands</div>
+<div class="project-card">Concept Art Set for an Indie Game</div>
+<div class="project-card">Poster & Social Media Visual Design</div>
+</div>
+</section>
+<section id="experience">
+<h2 class="section-title">Experience</h2>
+<div class="card">
+<ul>
+<li>4 years of professional experience as a digital artist</li>
+<li>120+ commissions completed for clients and brands</li>
+<li>Freelance artist working internationally</li>
+<li>Concept art for indie game development teams</li>
+<li>Specialized in character design, illustration, and world-building</li>
+</ul>
+</div>
+</section>
+<section id="contact">
+<h2 class="section-title">Contact Me</h2>
+<div class="card contact">
+<p>Email: <a href="mailto:arminrhgozar@gmail.com">arminrhgozar@gmail.com</a></p>
+<p>Discord: <span>vjvc</span></p>
+<p>Open for commissions & collaboration</p>
+</div>
+<form id="contact-form" class="card">
+<label>Name</label><input type="text" required>
+<label>Email</label><input type="email" required>
+<label>Message</label><textarea rows="5" required></textarea>
+<button type="submit">Send Message</button>
 </form>
-
-  </section><button id="topBtn" onclick="scrollToTop()">Top</button>
-
+</section>
+<button id="topBtn" onclick="scrollToTop()">Top</button>
 <script>
-  window.addEventListener('scroll', () => {
-    const btn = document.getElementById('topBtn');
-    if(window.scrollY > 300) btn.style.display = 'block';
-    else btn.style.display = 'none';
-  });
-
-  function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        document.querySelectorAll('.skill-bar-fill').forEach(bar => bar.style.width = bar.dataset.width);
-        obs.disconnect();
-      }
-    });
-  }, { threshold: 0.25 });
-  observer.observe(document.getElementById('skills'));
-
-  document.getElementById('contact-form').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thanks! Your message was received.');
-    e.target.reset();
-  });
-</script></body>
+window.addEventListener('scroll',()=>{document.getElementById('topBtn').style.display=window.scrollY>300?'block':'none';});
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});} 
+const observer=new IntersectionObserver((entries,obs)=>{entries.forEach(entry=>{if(entry.isIntersecting){document.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.width);obs.disconnect();}});},{threshold:0.25});
+observer.observe(document.getElementById('skills'));
+document.getElementById('contact-form').addEventListener('submit',e=>{e.preventDefault();alert('Thanks! Your message was received.');e.target.reset();});
+</script>
+</body>
 </html>
