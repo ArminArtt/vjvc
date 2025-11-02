@@ -30,6 +30,20 @@ section{padding:6rem 1.5rem 4rem;max-width:1100px;margin:auto;}
 .contact p{margin-bottom:0.5rem;} .contact a{color:var(--primary-light);text-decoration:none;} 
 form input,form textarea{width:100%;padding:14px;background:#111;color:white;border:1.5px solid #555;border-radius:8px;margin-bottom:1rem;transition:.3s;} form input:focus,form textarea:focus{border-color:var(--primary-light);} form button{background:var(--primary);color:black;padding:12px 28px;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;} form button:hover{opacity:.8;} 
 #topBtn{position:fixed;bottom:25px;right:25px;background:var(--primary);padding:12px 18px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;display:none;} #topBtn:hover{opacity:.75;}
+/* Snow animation */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 1rem;
+  pointer-events: none;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
 </style>
 </head>
 <body>
@@ -101,6 +115,21 @@ function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
 const observer=new IntersectionObserver((entries,obs)=>{entries.forEach(entry=>{if(entry.isIntersecting){document.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.width);obs.disconnect();}});},{threshold:0.25});
 observer.observe(document.getElementById('skills'));
 document.getElementById('contact-form').addEventListener('submit',e=>{e.preventDefault();alert('Thanks! Your message was received.');e.target.reset();});
+</script>
+<script>
+// Snow Generator
+function createSnow() {
+  const snow = document.createElement('div');
+  snow.classList.add('snowflake');
+  snow.textContent = '✦';
+  snow.style.left = Math.random() * 100 + 'vw';
+  snow.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  snow.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  snow.style.opacity = Math.random();
+  document.body.appendChild(snow);
+  setTimeout(() => snow.remove(), 12000);
+}
+setInterval(createSnow, 200);
 </script>
 </body>
 </html>
