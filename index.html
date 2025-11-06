@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Armin — Digital Artist</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg: #050505;
+  --text: #e0e0e0;
+  --accent-light: #aaaaaa;
+  --accent-mid: #888888;
+  --accent-dark: #666666;
+  --card: #111;
+  --muted: #bdbdbd;
+  --radius: 12px;
+  --maxw: 1100px;
+  --accent-rgb: 136,136,136;
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family: 'Vazirmatn', system-ui, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; scroll-behavior:smooth;}
+.loader{position:fixed; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--bg); z-index:9999; transition:opacity .6s;}
+.loader h1{color:var(--accent-mid); font-size:1.6rem; margin:0 0 8px;}
+.loader .time-date{color:var(--accent-light); font-weight:600;}
+
+.site-header{position:sticky; top:0; background:linear-gradient(180deg, rgba(5,5,5,0.6), transparent); backdrop-filter: blur(4px); z-index:50;}
+.nav{max-width:var(--maxw); margin:0 auto; padding:14px 20px; display:flex; justify-content:space-between; align-items:center;}
+.brand{color:var(--accent-mid); font-weight:800; text-decoration:none; font-size:1.2rem;}
+.nav-links a{color:var(--muted); text-decoration:none; margin-left:18px; font-weight:600;}
+.nav-links a:hover{color:var(--accent-light);}
+
+.content{opacity:0; transform:translateY(20px); transition:all .8s cubic-bezier(.2,.9,.2,1); max-width:var(--maxw); margin:30px auto; padding:0 20px 80px;}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:50px 10px 30px;}
+.profile-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--accent-mid);box-shadow:0 0 20px rgba(var(--accent-rgb),.35);margin-bottom:18px;}
+.title{font-size:2.4rem;color:var(--accent-light);margin:0;}
+.title .muted{color:var(--accent-mid); font-weight:600; font-size:1rem;}
+.lead{color:var(--muted);margin-top:12px;max-width:720px;}
+.btn{display:inline-block;background:var(--accent-mid);color:var(--bg);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700; cursor:pointer;}
+.btn.ghost{background:transparent;border:1px solid rgba(var(--accent-rgb),.12);color:var(--accent-light);}
+.btn + .btn{margin-left:12px;}
+
+.section{padding:34px 0;border-top:1px solid rgba(255,255,255,0.02);}
+.section-title{font-size:1.6rem;color:var(--accent-mid);text-align:center;margin-bottom:14px;}
+.section-text{color:var(--muted);text-align:center;max-width:820px;margin:0 auto;}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:900px;margin:10px auto 0;}
+.skill{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(var(--accent-rgb),0.06);}
+.skill-label{display:flex;justify-content:space-between;font-weight:700;color:var(--accent-light);margin-bottom:8px;}
+.skill-bar{background:#222;height:12px;border-radius:999px;overflow:hidden;}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--accent-mid),var(--accent-light));width:0;transition:width 1.8s ease;}
+
+.card-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px;}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 12px 30px rgba(var(--accent-rgb),.06);}
+.card h3{margin:0 0 8px;color:var(--accent-light);}
+.card p{margin:0 0 12px;color:var(--muted);}
+.card .link{color:var(--accent-light);font-weight:700;text-decoration:none;}
+
+.projects-list{max-width:700px;margin:0 auto;}
+.projects-list ul{list-style:inside disc;padding-left:0;color:var(--muted);}
+.projects-list li{padding:8px 0;}
+
+.contact-card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 8px 24px rgba(var(--accent-rgb),.06);max-width:700px;margin:0 auto 14px;text-align:center;}
+.contact-card a{color:var(--accent-light);text-decoration:none;font-weight:700;}
+.contact-form{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+.contact-form input, .contact-form textarea{background:#121212;border:1px solid rgba(var(--accent-rgb),.12);padding:10px;border-radius:8px;color:var(--text);resize:vertical;}
+.form-actions{text-align:right;}
+
+.site-footer{padding:32px 0;text-align:center;color:var(--muted);}
+.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;background:rgba(255,255,255,0.02);padding:3px 6px;border-radius:6px;}
+
+.snowflake{position:fixed;top:-5%;z-index:10;pointer-events:none;color:white; user-select:none;animation-name:fall; animation-timing-function:linear;}
+@keyframes fall{0%{transform:translateY(-10vh);}100%{transform:translateY(110vh);}}
+
+@media (max-width:720px){
+  .title{font-size:1.8rem;}
+  .profile-pic{width:120px;height:120px;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="global-loader">
+  <h1>Loading...</h1>
+  <div class="time-date" id="loader-datetime"></div>
+</div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="#">Armin — vjvc</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#artist">Artist</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="content" id="main-content">
+
+<section id="hero" class="hero">
+  <img class="profile-pic" src="https://i.postimg.cc/TYbRz0NG/Andrew-Graves.jpg" alt="Armin profile" />
+  <h1 class="title">Armin <span class="muted">— vjvc Digital Artist</span></h1>
+  <p class="lead">Specializing in character design, illustration, and stylized artwork.<br/>I create visuals for communities, streamers, and personal commissions.</p>
+  <div class="hero-cta">
+    <a class="btn" href="#projects">See Projects</a>
+    <a class="btn ghost" href="#contact">Contact</a>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2 class="section-title">About Me</h2>
+  <p class="section-text">Hi — I'm Armin, a professional digital artist with 4 years of experience. I design characters, illustrate stylized artwork, and create visual content for streamers and communities.</p>
+</section>
+
+<section id="skills" class="section skills-section">
+  <h2 class="section-title">Art Skills</h2>
+  <div class="skills-grid">
+    <div class="skill"><div class="skill-label"><span>Illustration</span><span>95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div></div>
+    <div class="skill"><div class="skill-label"><span>Character Design</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div></div>
+    <div class="skill"><div class="skill-label"><span>Concept Art</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div></div>
+    <div class="skill"><div class="skill-label"><span>Digital Painting</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div></div>
+    <div class="skill"><div class="skill-label"><span>Photoshop & Procreate</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div></div>
+    <div class="skill"><div class="skill-label"><span>UI/UX Art</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div></div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2 class="section-title">Art Projects</h2>
+  <div class="card-list">
+    <article class="card"><h3>Character Set</h3><p>A complete series of stylized characters for game concept.</p><a class="link" href="#" target="_blank">View</a></article>
+    <article class="card"><h3>Streamer Illustrations</h3><p>Custom art pieces for Twitch and YouTube streamers.</p><a class="link" href="#" target="_blank">Details</a></article>
+    <article class="card"><h3>Digital Painting Series</h3><p>Standalone paintings showcasing stylized art techniques.</p><a class="link" href="#" target="_blank">Open</a></article>
+  </div>
+</section>
+
+<section id="artist" class="section">
+  <h2 class="section-title">Experience</h2>
+  <div class="projects-list">
+    <ul>
+      <li><strong>4 years</strong> as a professional digital artist</li>
+      <li>Character design, illustration, and stylized artwork</li>
+      <li>Commissioned artwork for communities & streamers</li>
+      <li>Integrating art with modern UI/UX concepts</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-card">
+    <p>Email: <a href="mailto:arminrhgozar@gmail.com">arminrhgozar@gmail.com</a></p>
+    <p>Instagram: <a href="#">@armin.rhg</a></p>
+    <p>Discord: <span class="mono">vjvc</span></p>
+  </div>
+
+  <form id="contact-form" class="contact-form">
+    <input name="name" type="text" placeholder="Your name" required />
+    <input name="email" type="email" placeholder="Your email" required />
+    <textarea name="message" placeholder="Write your message..." rows="5" required></textarea>
+    <div class="form-actions"><button type="submit" class="btn">Send Message</button></div>
+  </form>
+</section>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Armin — Digital Artist</p>
+</footer>
+
+<script>
+(() => {
+  const loader = document.getElementById('global-loader');
+  const loaderDatetime = document.getElementById('loader-datetime');
+  const content = document.getElementById('main-content');
+
+  function updateLoaderTime() {
+    const now = new Date();
+    if(loaderDatetime) loaderDatetime.textContent = now.toLocaleDateString() + ' - ' + now.toLocaleTimeString();
+  }
+  updateLoaderTime();
+  const dtInterval = setInterval(updateLoaderTime, 1000);
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if(loader) loader.style.opacity='0';
+      setTimeout(()=>loader.style.display='none',700);
+      if(content){content.style.opacity='1'; content.style.transform='translateY(0)';}
+      clearInterval(dtInterval);
+      animateSkills();
+      startSnow();
+    }, 600);
+  });
+
+  function animateSkills(){
+    document.querySelectorAll('.skill-fill').forEach(el=>{
+      const w = el.getAttribute('data-width')||'0%';
+      el.style.width=w;
+    });
+  }
+
+  function startSnow(){
+    const total=45;
+    for(let i=0;i<total;i++) createSnowflake();
+    setInterval(()=>{createSnowflake();},700);
+  }
+  function createSnowflake(){
+    const s=document.createElement('div');
+    s.className='snowflake'; s.textContent='❄';
+    const size=Math.random()*12+10; s.style.fontSize=size+'px';
+    s.style.left=Math.random()*100+'vw';
+    s.style.opacity=(Math.random()*0.6+0.2).toString();
+    s.style.animationDuration=(Math.random()*8+6)+'s';
+    s.style.transform=`translateY(-10vh) rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(s);
+    const dur=parseFloat(s.style.animationDuration)||9;
+    setTimeout(()=>s.remove(),(dur+0.8)*1000);
+  }
+
+  const form=document.getElementById('contact-form');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      const btn=form.querySelector('button[type="submit"]');
+      if(btn){btn.disabled=true; btn.textContent='Sending...';}
+      setTimeout(()=>{
+        alert('Thanks — message sent (demo). I will get back to you soon.');
+        form.reset();
+        if(btn){btn.disabled=false; btn.textContent='Send Message';}
+      },900);
+    });
+  }
+
+  const yearEl=document.getElementById('year');
+  if(yearEl) yearEl.textContent=new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
